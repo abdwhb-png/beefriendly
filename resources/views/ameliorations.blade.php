@@ -23,7 +23,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="./images/logo1.png">
+                    <img src="{{ asset('images/logo1.png') }}">
                     <h2>BEE friendly</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -31,19 +31,19 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="index.html">
+                <a href="{{ route('home') }}" >
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Tableau de bord</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="#">
                     <span class="material-symbols-sharp">person</span>
                     <h3>Profil</h3>
                 </a>
-                <a href="historique.html">
+                <a href="/historique">
                     <span class="material-symbols-sharp">receipt_long</span>
                     <h3>Historique</h3>
                 </a>
-                <a href="reclamation.html">
+                <a href="/reclamations">
                     <span class="material-symbols-sharp">mail_outline</span>
                     <h3>Réclamation</h3>
                     <!--<span class="message-count">26</span>-->
@@ -52,11 +52,15 @@
                     <span class="material-symbols-sharp">insights</span>
                     <h3>Fonctionnalité</h3>
                 </a>
-                <a href="#">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
                 </a>
-                <a href="#">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                <a href="/ameliorations" class="active">
                     <span class="material-symbols-sharp">report</span>
                     <h3>Comment se protoger</h3>
                 </a>
@@ -64,9 +68,9 @@
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
                 </a>
-
-
-
+            
+            
+            
             </div>
 
         </aside>

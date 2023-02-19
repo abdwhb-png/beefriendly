@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Providers\UserRolesServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    protected $userRoles = UserRolesServiceProvider::ROLES;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -50,9 +52,9 @@ class LoginController extends Controller
      
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->type == 'admin') {
+            if (auth()->user()->type == $this->userRoles['admin']) {
                 return redirect()->route('admin.home');
-            }else if (auth()->user()->type == 'manager') {
+            }else if (auth()->user()->type == $this->userRoles['manager']) {
                 return redirect()->route('manager.home');
             }else{
                 return redirect()->route('home');

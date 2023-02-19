@@ -27,6 +27,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
   
     Route::get('/home',  [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::view('/ameliorations', 'ameliorations');
+    Route::view('/reclamations', 'reclamations');
+    Route::view('/historique', 'historique');
 });
   
 /*------------------------------------------
